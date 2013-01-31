@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Effectively-Propositional Reasoning About Reachability in Linked Data Structures</title>
+    <link rel="stylesheet" type="text/css" href="site.css">
+    <script type="text/javascript" src="site.js"></script>
+</head>
+<body>
+    <div id="main">
+      <div class="name-header"><div class="name">Effectively-Propositional Reasoning About Reachability</div></div>
+      <div class="authors">
+	Shachar Itzhaky, Anindya Banerjee, Neil Immerman, Aleks Nanevski, Mooly Sagiv
+	  </div>
+      <p><i>(pending submission to CAV 2013)</i>
+      <span class="paper-links">
+        <a onclick="tog('cav13-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/cav2013.pdf">PDF</a><br/>
+        <span class="paper-sublinks">
+        Slides:&nbsp; <a href="dl/effectively-propositional-talk.ppt">PPT</a>&nbsp; <a href="dl/effectively-propositional-talk.pdf">PDF</a>
+		</span>
+      </span>
+      </p>
+      <div id="cav13-abstract" class="abstract" style="display: none;">
+<p>
+This paper proposes a novel method of harnessing existing SAT solvers to verify
+reachability properties of programs that manipulate linked-list data structures.  Such properties
+are essential for proving program termination, correctness of data structure
+invariants, and other safety properties. Our solution is complete,
+i.e., a SAT solver produces a counterexample whenever a program
+does not satisfy its specification. This result is
+surprising since even first-order theorem provers usually cannot deal
+with reachability in a complete way, because doing so requires reasoning about 
+transitive closure.</p>
+<p>
+Our result is based on the following ideas:</p>
+<ol>
+<li>Programmers must write assertions in a restricted logic without quantifier alternation or function symbols. </li>
+<li>The correctness of many programs can be expressed in such restricted  logics, although we explain the tradeoffs.</li>
+<li>Recent results in descriptive complexity can be utilized to show that every program that manipulates
+potentially cyclic, singly- and doubly-linked lists and that is annotated with assertions written in this restricted logic, can be verified with a SAT solver. </li>
+</ol>
+<p>
+We implemented a tool atop Z3 and used it to show the correctness of several linked list programs.
+</p>
+      </div>
+	  <h1>Downloads</h1>
+      <dl>
+        <dt><b>Online Demo</b> - where you can run the examples shown in the paper, or try your own input.</dt>
+        <dd><a href="http://ein.dvrdns.org/">Click me.</a></dd>
+
+      </dl>
+      <dl>
+        <dt><b>Tool Code</b> (including examples used in the paper)</dt>
+        <dd>Windows binary: <a href="dl/AFWP-win32-130126.zip"><tt>AFWP-win32-130126.zip</tt></a> (2.3M)<br/>
+            Source zip: <a href="dl/AFWP-src-130126.zip"><tt>AFWP-src-130126.zip</tt></a> (4.9M)<br/>
+			Source bz2: <a href="dl/AFWP-src-130126.tar.bz2"><tt>AFWP-src-130126.tar.bz2</tt></a> (2.6M)
+			</dd><dd><p style='font-size: 80%; font-style: italic'>
+			Requires <a href="http://python.org">Python</a> 2.7.x
+			and <a href="http://z3.codeplex.com">Z3</a> (freely available); 			
+			See the <a href="afwp/readme.html">README</a> for instructions.</p>
+           </dd>
+
+      </dl>
+	</div>
+</body>
+</html>
+

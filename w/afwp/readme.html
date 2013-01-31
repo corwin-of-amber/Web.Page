@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="../site.css"></link>
+	<title>AF^R-WP-Based Verification Tool - README</title>
+</head>
+<body>
+	<div id="main">
+      <div class="name-header"><div class="name">Effectively-Propositional Reasoning About Reachability</div></div>
+      <div class="authors">Using the Tool</div>
+	<h1>System Requirements</h1>
+	<ul>
+		<li><a href="http://z3.codeplex.com">Z3 SMT Solver</a> from MSR; 
+		  the executable, <code>z3</code> (<code>z3.exe</code> on Windows),
+		  must be present on the system path.</li>
+		<li><a href="http://python.org/download/releases/2.7.3/">Python 2.7.x</a>,
+		  except for the Windows executable release where Python is already bundled.</li>
+		<li>For GUI: 
+		  <ul>
+		   <li><a href="http://www.riverbankcomputing.com/software/pyqt/download">PyQt4</a></li>
+		   <li><a href="http://pypi.python.org/pypi/pygraphviz">pygraphviz</a></li>
+		  </ul>
+		   <i class="note">Without these the tool will still run and provide textual feedback.</i>
+		   <i class="note">Notice that currently (January 2013) there is no official version of
+		     pygraphviz running on Windows.</i>
+		     
+		</li>
+	</ul>
+	
+	<h1>Installation Instructions</h1>
+	<ol>
+		<li>First, make sure that Z3 can run from the console. Open a terminal 
+		  (Windows: <span class="winkey" title="Win key"></span>+R, <code>cmd</code> <b class="enterkey" title="Enter key">⏎</b>;
+		  Mac: Applications ▸ Utilities ▸ Terminal)
+		  and type the following command: <code>z3 -h</code>.
+		  You should see a list of Z3 command-line options.
+		<li>Extract the files from the downloaded archive matching your operating system.</li>
+		<li>To check your installation:<br/>
+		<p>At the terminal command prompt, <code>cd</code> to the directory with the extracted
+		files.</p>
+		  <ul>
+		   <li>For the Windows executable release: run <code class="command">analyze examples\sll-reverse.imp</code></li>
+		   <li>For Python source releases, run <code class="command">python analyze.py examples/sll-reverse.imp</code>
+		   You may need to prefix <code>python</code> with a path to the Python executable
+		    if it is not found on your system path, e.g. <code>C:\Python27\python</code>.
+		   </li>
+		 </ul>
+		 <p>You can then try other examples from the <code>examples/</code> directory.</p>
+		</li>
+	</ol>
+	</div>
+</body>
+</html>
