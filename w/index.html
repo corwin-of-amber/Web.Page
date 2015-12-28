@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+    <script src="../../Web.RealTime/reload.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <title>Shachar Itzhaky (TAU)</title>
@@ -8,35 +9,150 @@
     <script type="text/javascript" src="site.js"></script>
 </head>
 <body>
-    <div id="main">
-      <div class="name-header"><div class="name">Shachar Itzhaky</div></div>
-      <div class="authors">
-	A Minimalist Web Page
-        <span style="float: right;">
-          <script type="text/javascript">
-            var addr = "";
-            addr = "";
+  <div id="main">
+    <div class="name-header"><div class="name">Shachar Itzhaky</div></div>
+    <div class="authors">
+      A Minimalist Web Page
+      <span style="float: right;">
+        <script type="text/javascript">
+            var addr = "shacha";
+            addr += "ri@mit";
             document.write('<a href="mailto:'+addr+'.edu">'+addr+'</a>');
-          </script>
-        </span>
-        </div>
+        </script>
+      </span>
+    </div>
 
 	<p>Well, Hi.</p>
 
-	  <!-- ---------------------------------------- -->
-      <h1>Publications</h1>
-	  <!-- ---------------------------------------- -->
+    <!-- ---------------------------------------- -->
+    <h1>Thesis</h1>
+    <!-- ---------------------------------------- -->
 
-      <p><b>Effectively-Propositional Reasoning About Reachability in Linked Data Structures</b>
-      <span style="float: right;"><b>
+    <p><b>Automatic Reasoning for Pointer Programs Using Decidable Logics</b>
+      <span class="side-links">
+        <a href="dl/thesis.pdf">PDF</a>
+      </span>
+      <br/>
+      Under the supervision of Professor Mooly Sagiv
+      <br/>
+      <i>Tel Aviv University (submitted: August 2014; approved: July 2015)</i>
+      
+    </p>
+
+    <!-- ---------------------------------------- -->
+    <h1>Publications</h1>
+    <!-- ---------------------------------------- -->
+
+    <p><b>Property-Directed Shape Analysis</b>
+      <span class="side-links">
+        <a onclick="tog('cav14-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/cav2014.pdf">PDF</a>
+      </span>
+      <br/>
+      Shachar Itzhaky, Nikolaj Bjørner, Thomas Reps, Mooly Sagiv, Aditya Thakur
+      <i>In CAV 2014 (Computer Aided Verification, Vienna, Austria, July 2014)</i>
+    </p>
+    <div id="cav14-abstract" class="abstract" style="display: none;">
+<p>This paper addresses the problem of automatically generating quantified invariants 
+for programs that manipulate singly- and doubly-linked list data structures. 
+Our algorithm is property-directed — i.e., its choices are driven by the properties to be proven. 
+The algorithm is able to establish that a correct program has no memory-safety
+violations — e.g., null-pointer dereferences, double frees —
+and that data-structure invariants are preserved.
+For programs with errors, the algorithm produces concrete counterexamples.
+</p>
+<p>More broadly, the paper describes how to integrate IC3 with full predicate abstraction. 
+The analysis method is complete in the following sense: if an inductive
+invariant that proves that the program satisfies a given property is 
+expressible as a Boolean combination of a given set of predicates, then the analysis will find such an invariant.
+This method represents the first shape-analysis algorithm that is capable of 
+</p>
+<ol>
+  <li>reporting concrete counterexamples, or alternatively</li>
+  <li>establishing that the predicates in use are not capable of proving the property in question.</li>
+</ol>
+    </div>
+  
+    <p><b>VeriCon: Towards Verifying Controller Programs in Software-Defined Networks</b>
+      <span class="side-links">
+        <a onclick="tog('pldi14-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/pldi2014.pdf">PDF</a>
+      </span>
+      <br/>
+      Thomas Ball, Nikolaj Bjørner, Aaron Gember,
+        Shachar Itzhaky, Aleksandr Karbyshev, Mooly Sagiv,
+        Michael Schapira, Asaf Valadarsky
+      <i>In PLDI 2014 (35th ACM SIGPLAN Conference on Programming Language Design and Implementation, 
+        Edinburgh, UK, June 2014)</i>
+    </p>
+    <div id="pldi14-abstract" class="abstract" style="display: none;">
+<p>Software-defined networking (SDN) is a new paradigm for operating and managing computer networks. SDN enables logically-centralized control over network devices through a “controller” software that operates independently from the network hardware, and can be viewed as the network operating system. Network operators can run both inhouse and third-party SDN programs (often called <em>applications</em>) on top of the controller, e.g., to specify routing and access control policies. SDN opens up the possibility of applying formal methods to prove the correctness of computer networks. Indeed, recently much effort has been invested in applying finite state model checking to check that SDN programs behave correctly. However, in general, scaling these methods to large networks is challenging and, moreover, they cannot guarantee the absence of errors.
+</p>
+<p>We present VeriCon, the first system for verifying that an SDN program is correct on <em>all</em> admissible topologies and for <em>all</em> possible (infinite) sequences of network events. VeriCon either confirms the correctness of the controller program on <em>all</em> admissible network topologies or outputs a concrete counterexample. VeriCon uses first-order logic to specify admissible network topologies and desired network-wide invariants, and then implements classical Floyd-Hoare-Dijkstra deductive verification using Z3. Our preliminary experience indicates that VeriCon is able to rapidly verify correctness, or identify bugs, for a large repertoire of simple core SDN programs. VeriCon is compositional, in the sense that it verifies the correctness of execution of any single network event w.r.t. the specified invariant, and can thus scale to handle large programs. To relieve the burden of specifying inductive invariants from the programmer, VeriCon includes a separate procedure for inferring invariants, which is shown to be effective on simple controller programs. We view VeriCon as a first step en route to practical mechanisms for verifying network-wide invariants of SDN programs.
+</p>
+    </div>
+
+    <p><b>Modular Reasoning about Heap Paths via Effectively Propositional Formulas</b>
+      <span class="side-links">
+        <a onclick="tog('popl14-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/popl2014.pdf">PDF</a>
+      </span>
+      <br/>
+      Shachar Itzhaky, Anindya Banerjee, Neil Immerman, Ori Lahav, Aleksandar Nanevski, Mooly Sagiv
+      <i>In POPL 2014 (41st ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages, 
+      San Diego, CA, USA, January 2014)</i>
+    </p>
+    <div id="popl14-abstract" class="abstract" style="display: none;">
+<p>First-order logic with transitive closure and separation logic enable elegant interactive verification of heap-manipulating programs.
+However, undecidabilty results and high asymptotic complexity of checking validity preclude complete automatic verification of such programs,
+even when loop invariants and procedure contracts are specified as formulas in these logics.
+This paper tackles the problem of procedure-modular verification of reachability properties of heap-manipulating programs using efficient decision procedures that are complete:
+that is, a SAT solver must generate a counterexample whenever a program does not satisfy its specification. By
+</p>
+<ol>
+  <li>requiring each procedure modifies a fixed set of heap partitions and creates a bounded amount of heap sharing, and </li>
+  <li>restricting program contracts and loop invariants to use only deterministic paths in the heap, </li>
+</ol>
+<p class="noindent">we show that heap reachability updates can be described in a simple manner.
+The restrictions force program specifications and verification conditions to lie within a fragment of first-order logic with
+transitive closure that is reducible to effectively propositional logic, and hence facilitate sound, complete and efficient verification.
+We implemented a tool atop Z3 and report on preliminary experiments that establish the correctness of several programs that manipulate linked data structures.
+</p>
+    </div>
+  
+    <p><b>Solving Geometry Problems Using a Combination of Symbolic and Numerical Reasoning</b>
+      <span class="side-links">
+        <a onclick="tog('lpar13-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/lpar2013.pdf">PDF</a>
+      </span>
+      <br/>
+      Shachar Itzhaky, Sumit Gulwani, Neil Immerman, Mooly Sagiv
+	  <i>In LPAR-19, Stellenbosch, South Africa, December 2013</i>
+	</p>
+    <div id="lpar13-abstract" class="abstract" style="display: none;">
+<p>We describe a framework that combines deductive, numeric, and inductive reasoning to solve geometric problems. Applications in- clude the generation of geometric models and animations, as well as problem solving in the context of intelligent tutoring systems.</p>
+<p>Our novel methodology uses</p>
+<ol>
+  <li>Deductive reasoning to generate a partial program from logical constraints,</li>
+  <li>Numerical methods to evaluate the partial program, thus creating geometric models which are solutions to the original problem,</li>
+  <li>Inductive synthesis to read off new constraints that are then applied to one more round of deductive reasoning leading to the desired deterministic program.</li> 
+</ol>
+<p>By the combination of methods we were able to solve problems that each of the methods was not able to solve by itself.</p>
+<p>The number of nondeterministic choices in a partial program provides a measure of how close a problem is to being solved and can thus be used in the educational context for grading and providing hints.</p>
+<p>We have successfully evaluated our methodology on 18 Scholastic Aptitude Test geometry problems, and 11 ruler/compass-based geometry construction problems.
+Our tool solved these problems in an average of a few seconds per problem.</p>
+    </div>
+    
+    <p><b>Effectively-Propositional Reasoning About Reachability in Linked Data Structures</b>
+      <span class="side-links">
         <a onclick="tog('cav13-abstract'); return false" href="#">Abstract</a>&nbsp;
         <a href="dl/cav2013.pdf">PDF</a>
-      </b></span>
+      </span>
       <br/>
-	Shachar Itzhaky, Anindya Banerjee, Neil Immerman, Aleks Nanevski, Mooly Sagiv
-      <i>Computer Aided Verification, 2013, St. Petersburg, Russia, July 2013.</i>
-      </p>
-      <div id="cav13-abstract" class="abstract" style="display: none;">
+      Shachar Itzhaky, Anindya Banerjee, Neil Immerman, Aleksandar Nanevski, Mooly Sagiv
+      <i>In CAV 2013 (Computer Aided Verification, 2013, St. Petersburg, Russia, July 2013)</i>
+    </p>
+    <div id="cav13-abstract" class="abstract" style="display: none;">
 <p>
 This paper proposes a novel method of harnessing existing SAT solvers to verify
 reachability properties of programs that manipulate linked-list data structures.  Such properties
@@ -59,17 +175,17 @@ potentially cyclic, singly- and doubly-linked lists and that is annotated with a
 We implemented a tool atop Z3 and used it to show the correctness of several linked list programs.
 </p>      </div>
 
-      <p><b>A Simple Inductive Synthesis Methodology and Its Applications</b>
-      <span style="float: right;"><b>
+    <p><b>A Simple Inductive Synthesis Methodology and Its Applications</b>
+      <span class="side-links">
         <a onclick="tog('splash10-abstract'); return false" href="#">Abstract</a>&nbsp;
         <a href="http://portal.acm.org/exportformats.cfm?id=1869463&expformat=bibtex">BibTeX</a>&nbsp;
         <a href="http://portal.acm.org/ft_gateway.cfm?id=1869463&type=pdf&CFID=112643958&CFTOKEN=28923922">PDF</a>
-      </b></span>
+      </span>
       <br/>
-	Shachar Itzhaky, Sumit Gulwani, Neil Immerman, Mooly Sagiv
-      <i>In the Proceedings of the ACM SPLASH Conference (SPLASH 2010), Reno, NV, United States, October 2010.</i>
-      </p>
-      <div id="splash10-abstract" class="abstract" style="display: none;">
+      Shachar Itzhaky, Sumit Gulwani, Neil Immerman, Mooly Sagiv
+      <i>In SPLASH 2010 (ACM SIGPLAN Conference on  Systems, Programming, Languages and Applications: Software for Humanity, Reno, NV, United States, October 2010)</i>
+    </p>
+    <div id="splash10-abstract" class="abstract" style="display: none;">
 <p>
 Given a high-level specification and a low-level programming language, our goal is to automatically
 synthesize an efficient program that meets the specification. In this paper, we present a new
@@ -90,57 +206,56 @@ The methods in this paper have been implemented in Python using the SMT solver Z
       </div>
 
 	  <!-- ---------------------------------------- -->
-	  <h1>Technical Reports</h1>
+      <!-- <h2>Pending</h2> -->
 	  <!-- ---------------------------------------- -->
-	  
-      <p><b>Effectively-Propositional Reasoning About Reachability in Linked Data Structures</b>
+
+    <!-- ---------------------------------------- -->
+    <h1>Technical Reports</h1>
+    <!-- ---------------------------------------- -->
+
+    <p><b>Effectively-Propositional Reasoning About Reachability in Linked Data Structures</b>
       <span style="float: right;"><b>
         <a href="dl/tr-2013.pdf">PDF</a>
       </b></span>
       <br/>
-	Shachar Itzhaky, Anindya Banerjee, Neil Immerman, Aleks Nanevski, Mooly Sagiv
- 
-       <p><b>Solving Geometry Problems Using a Combination of Symbolic and Numerical Reasoning</b>
+      Shachar Itzhaky, Anindya Banerjee, Neil Immerman, Aleksandar Nanevski, Mooly Sagiv
+    </p>
+  
+    <p><b>Solving Geometry Problems Using a Combination of Symbolic and Numerical Reasoning</b>
       <span style="float: right;"><b>
         <a onclick="tog('tr2012-abstract'); return false" href="#">Abstract</a>&nbsp;
         <a href="dl/tr-2012.pdf">PDF</a>
       </b></span>
       <br/>
-	Shachar Itzhaky, Sumit Gulwani, Neil Immerman, Mooly Sagiv
-      <div id="tr2012-abstract" class="abstract" style="display: none;">
-<p>
-We describe a framework that combines deductive, numeric, and inductive
-reasoning to solve geometric problems.  Applications include the generation of
-geometric models and animations, as well as problem solving in the context of
-intelligent tutoring systems.</p>
-<p>
-Our novel methodology uses (i) deductive reasoning to generate a partial program from logical
-constraints, (ii) numerical methods to evaluate the partial program, thus creating geometric models
-which are solutions to the original problem, and (iii) inductive synthesis to read off new
-constraints that are then applied to one more round of deductive reasoning leading to the desired
-deterministic program. By the combination of methods we were able to solve
-problems that each of the methods was not able to solve by itself.</p>
-<p>
-The number of nondeterministic choices in a partial program provides a
-measure of how close a problem is to being solved and can thus be used in the educational context for grading and providing hints.</p>
-<p>
-We have successfully evaluated our methodology on 18
-Scholastic Aptitude Test geometry problems, and 11 ruler/compass-based
-geometry construction problems. Our tool solved these problems using an
-average of a few seconds per problem.</p>
-      </div>
-
-      <h1>Software</h1>
-      <dl>
-        <dt><b>Figure</b> (2D Graphics Synthesis)</dt>
-        <dd>Windows: <a href="dl/Figure-win32-101202.zip"><tt>Figure-win32-101202.zip</tt></a> (32M)<br/>
-			Mac: <a href="dl/Figure-udzo-101202.dmg"><tt>Figure-udzo-101202.dmg</tt></a> (24M)
-			</dd><dd><p style='font-size: 80%; font-style: italic'>
-			Users are encouraged to download the <a href="http://sourceforge.net/projects/stixfonts/">STIX fonts package</a>
-			(free) for enhanced display of mathmatical symbols in formulas.</p>
-</dd>
-
-      </dl>
+      Shachar Itzhaky, Sumit Gulwani, Neil Immerman, Mooly Sagiv
+    </p>
+    <div id="tr2012-abstract" class="abstract" style="display: none;">
+<p>We describe a framework that combines deductive, numeric, and inductive reasoning to solve geometric problems. Applications in- clude the generation of geometric models and animations, as well as problem solving in the context of intelligent tutoring systems.</p>
+<p>Our novel methodology uses</p>
+<ol>
+  <li>Deductive reasoning to generate a partial program from logical constraints,</li>
+  <li>Numerical methods to evaluate the partial program, thus creating geometric models which are solutions to the original problem,</li>
+  <li>Inductive synthesis to read off new constraints that are then applied to one more round of deductive reasoning leading to the desired deterministic program.</li> 
+</ol>
+<p>By the combination of methods we were able to solve problems that each of the methods was not able to solve by itself.</p>
+<p>The number of nondeterministic choices in a partial program provides a measure of how close a problem is to being solved and can thus be used in the educational context for grading and providing hints.</p>
+<p>We have successfully evaluated our methodology on 18 Scholastic Aptitude Test geometry problems, and 11 ruler/compass-based geometry construction problems.
+Our tool solved these problems in an average of a few seconds per problem.</p>
     </div>
-  </body>
+
+    <h1>Software</h1>
+    <dl>
+      <dt><b>EPR-based Verification</b></dt>
+      <dd><a href="dl/fol-tool.zip">Source code</a> (incl. dependencies, about 6M)</dd>
+      <dt><b>Figure</b> (2D Graphics Synthesis)</dt>
+      <dd>Windows: <a href="dl/Figure-win32-101202.zip"><tt>Figure-win32-101202.zip</tt></a> (32M)<br/>
+          Mac: <a href="dl/Figure-udzo-101202.dmg"><tt>Figure-udzo-101202.dmg</tt></a> (24M)
+          </dd><dd><p style='font-size: 80%; font-style: italic'>
+          Users are encouraged to download the <a href="http://sourceforge.net/projects/stixfonts/">STIX fonts package</a>
+          (free) for enhanced display of mathmatical symbols in formulas.</p>
+      </dd>
+
+    </dl>
+  </div>
+</body>
 </html>
