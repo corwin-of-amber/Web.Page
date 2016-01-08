@@ -3,6 +3,7 @@
 	<name>Web.TAU</name>
 	<comment></comment>
 	<projects>
+		<project>Sindarin.Architecture</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

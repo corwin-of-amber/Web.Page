@@ -10,7 +10,10 @@
 </head>
 <body>
   <div id="main">
-    <div class="name-header"><div class="name">Shachar Itzhaky</div></div>
+    <div class="name-header">
+      <img src="images/angus.jpg" class="head" title="In fact, my glasses are a bit more round and sometimes I wear contacts">
+      <div class="name">Shachar Itzhaky</div>
+    </div>
     <div class="authors">
       A Minimalist Web Page
       <span style="float: right;">
@@ -243,10 +246,19 @@ The methods in this paper have been implemented in Python using the SMT solver Z
 Our tool solved these problems in an average of a few seconds per problem.</p>
     </div>
 
-    <h1>Software</h1>
-    <dl>
-      <dt><b>EPR-based Verification</b></dt>
-      <dd><a href="dl/fol-tool.zip">Source code</a> (incl. dependencies, about 6M)</dd>
+    <h1>Software</h1><a name="software">
+    <dl class="software">
+      <dt>EPR-based Verification</dt>
+      <dd>PDR<sup>∀</sup> – loop invariant inference<br/>
+        <a href="dl/univ-pdr-all-mac-20160107.zip">Mac</a>
+        <a href="dl/univ-pdr-all-ubuntu-x64-20160107.zip">Ubuntu 64-bit</a>,
+        <a href="dl/univ-pdr-all-ubuntu-x86-20160107.zip">32-bit</a>
+      </dd>
+        <!-- <a href="dl/fol-tool.zip">Source code</a> (incl. dependencies, about 6M)</dd> -->
+      
+      <dt>Object Spreadsheets</dt>
+      <dd><a href="http://objsheets-demo.csail.mit.edu">Live demo</a></dd>
+      <!--
       <dt><b>Figure</b> (2D Graphics Synthesis)</dt>
       <dd>Windows: <a href="dl/Figure-win32-101202.zip"><tt>Figure-win32-101202.zip</tt></a> (32M)<br/>
           Mac: <a href="dl/Figure-udzo-101202.dmg"><tt>Figure-udzo-101202.dmg</tt></a> (24M)
@@ -254,6 +266,7 @@ Our tool solved these problems in an average of a few seconds per problem.</p>
           Users are encouraged to download the <a href="http://sourceforge.net/projects/stixfonts/">STIX fonts package</a>
           (free) for enhanced display of mathmatical symbols in formulas.</p>
       </dd>
+      -->
 
     </dl>
   </div>

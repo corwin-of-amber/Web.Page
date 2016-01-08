@@ -21,6 +21,12 @@
     position: relative;
 }
 
+.head { 
+  float: right; 
+  border-left: 10px solid white;
+  margin-right: -5px;
+}
+
 .drop-shadow {
     color: #c0c0c0;
     position: relative;
@@ -101,6 +107,10 @@ code.command {
 
 .paper-sublinks {
 	font-size: smaller;
+}
+
+dl.software dt {
+  font-weight: bold;
 }
 
 }
