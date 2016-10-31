@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <script src="../../Web.RealTime/reload.js"></script>
+    <script src="../node_modules/kremlin-nwjs/reload.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>Shachar Itzhaky (TAU)</title>
+    <title>Shachar Itzhaky (MIT)</title>
     <link rel="stylesheet" type="text/css" href="site.css">
     <script type="text/javascript" src="site.js"></script>
 </head>
@@ -26,6 +26,11 @@
     </div>
 
 	<p>Well, Hi.</p>
+    <p>I am a postdoctoral associate at MIT CSAIL, in the Computer Aided Programming group headed
+    by Prof. Armando Solar-Lezama. My research areas include functional languages, synthesis of
+      functional programs, and high-level programming.
+      This is my current <a href="dl/research.pdf">research statement</a>.
+    </p>
 
     <!-- ---------------------------------------- -->
     <h1>Thesis</h1>
@@ -39,12 +44,78 @@
       Under the supervision of Professor Mooly Sagiv
       <br/>
       <i>Tel Aviv University (submitted: August 2014; approved: July 2015)</i>
-      
+      <br/>
+      <i>Recipient of the ACM SIGPLAN John C. Reynolds Doctoral Dissertation Award</i>
     </p>
 
     <!-- ---------------------------------------- -->
     <h1>Publications</h1>
     <!-- ---------------------------------------- -->
+    <p><b>Property-Directed Inference of Universal Invariants or Proving Their Absence</b> – extended version
+      <br/>
+      Aleksander Karbyshev, Nikolaj Bjørner, Shachar Itzhaky, Noam Rinetzky, and Sharon Shoham
+      <i>(accepted, to appear in JACM)</i>
+    </p>
+    
+    <p><b>Deriving Divide-and-Conquer Dynamic Programming Algorithms Using Solver-Aided Transformations</b>
+      <span class="side-links">
+        <a onclick="tog('oopsla16-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/oopsla2016.pdf">PDF</a>
+      </span>
+      <br/>
+      Shachar Itzhaky, Rohit Singh, Armando Solar-Lezama, Kuat Yessenov, Yongquan Lu, Charles Leiserson, Rezaul Chowdhury
+      <i>In SPLASH 2016 OOPSLA (to appear November 2016)</i>
+    </p>
+    <div id="oopsla16-abstract" class="abstract" style="display: none;">
+We introduce a framework allowing domain experts to ma- nipulate computational terms in the interest of deriving better, more efficient implementations. It employs deductive reasoning to generate provably correct efficient implementations from a very high-level specification of an algorithm, and inductive constraint-based synthesis to improve automation. Semantic information is encoded into program terms through the use of refinement types.
+In this paper, we develop the technique in the context of a system called Bellmania that uses solver-aided tactics to derive parallel divide-and-conquer implementations of dynamic programming algorithms that have better locality and are significantly more efficient than traditional loop-based implementations. Bellmania includes a high-level language for specifying dynamic programming algorithms and a calculus that facilitates gradual transformation of these specifications into efficient implementations. These transformations formalize the divide-and-conquer technique; a visualization interface helps users to interactively guide the process, while an SMT-based back-end verifies each step and takes care of low-level reasoning required for parallelism.
+We have used the system to generate provably correct implementations of several algorithms, including some important algorithms from computational biology, and show that the performance is comparable to that of the best manually optimized code.
+</p>
+    </div>
+
+    <p><span class="side-links">
+        <a onclick="tog('onward16-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/onward2016.pdf">PDF</a>
+      </span>
+      <b>Object Spreadsheets: a New Computational Model for End-user Development of Data-centric Web Applications</b>
+      <br/>
+      Richard Matthew McCutchen, Shachar Itzhaky, Daniel Jackson
+      <i>In SPLASH 2016 Onward! (to appear November 2016)</i>
+    </p>
+<div id="onward16-abstract" class="abstract" style="display: none;">
+<p>Spreadsheets offer many advantages as the computational and data-storage engine for applications that are authored by end users. Paradoxically, however, their main failing in this regard is their computational model. Despite being used in almost all cases to represent data that is essentially relational (with some hierarchical structuring), the spreadsheet model treats the two-dimensional grid as largely unstructured, with formulas linking cells in an ad hoc way.
+This paper reports on a quest to rethink the spreadsheet model. The model we propose supports not only conventional relational data, but also nested variable-size lists and object references. It includes a formula language suited to the data model and procedures to specify updates.
+The model has been implemented in a tool called Object Spreadsheets, which is intended for the development of data-centric web applications. We describe several example applications we built using the tool to demonstrate its applicability.</p>
+</div>
+
+    <p><b>Verified Lifting of Stencil Computations</b>
+      <span class="side-links">
+        <a onclick="tog('pldi16-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/pldi2016.pdf">PDF</a>
+      </span>
+      <br/>
+      Shoaib Kamil, Alvin Cheung, Shachar Itzhaky, and Armando Solar-Lezama
+      <i>In PLDI 2016 (37th ACM SIGPLAN Conference on Programming Language Design and Implementation, 
+        Santa Barbara, CA, USA, June 2016)</i>
+    </p>
+    <div id="pldi16-abstract" class="abstract" style="display: none;">
+<p>This paper demonstrates a novel combination of program synthesis and verification to lift stencil computations from low-level Fortran code to a high-level summary expressed using a predicate language. The technique is sound and mostly automated, and leverages counter-example guided inductive synthesis (CEGIS) to find provably correct translations. Lifting existing code to a high-performance description language has a number of benefits, including maintainability and performance portability. Our experiments show that the lifted summaries allow domain specific compilers to do a better job of parallelization as compared to an off-the-shelf compiler working on the original code, and can even support fully automatic migration to hardware accelerators such as GPUs. We have implemented verified lifting in a system called STNG and have evaluated it using microbenchmarks, mini-apps, and real-world applications. We demonstrate the benefits of verified lifting by first automatically summarizing Fortran source code into a high-level predicate language, and subsequently translating the lifted summaries into Halide, with the translated code achieving median performance speedups of 4.1× and up to 24× as compared to the original implementation.
+</p>
+    </div>
+
+    <p><b>Property-Directed Inference of Universal Invariants or Proving Their Absence</b>
+      <span class="side-links">
+        <a onclick="tog('cav15-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/cav2015.pdf">PDF</a>
+      </span>
+      <br/>
+      Aleksander Karbyshev, Nikolaj Bjørner, Shachar Itzhaky, Noam Rinetzky, and Sharon Shoham
+      <i>In CAV 2015 (Computer Aided Verification, San Francisco, CA, USA, July 2015)</i>
+    </p>
+    <div id="cav15-abstract" class="abstract" style="display: none;">
+<p>We present <i>Universal Property Directed Reachability</i> (PDR<sup>∀</sup>), a property-directed procedure for automatic inference of invariants in a universal fragment of first-order logic. PDR<sup>∀</sup> is an extension of Bradley’s PDR/IC3 algorithm for inference of propositional invariants. PDR<sup>∀</sup> terminates when it either discovers a concrete counterexample, infers an inductive universal invariant strong enough to establish the desired safety property, or finds a proof that such an invariant does not exist. We implemented an analyzer based on PDR<sup>∀</sup>, and applied it to a collection of list-manipulating programs. Our analyzer was able to automatically infer universal invariants strong enough to establish memory safety and certain functional correctness properties, show the absence of such invariants for certain natural programs and specifications, and detect bugs. All this, without the need for user-supplied abstraction predicates.
+</p>
+    </div>
 
     <p><b>Property-Directed Shape Analysis</b>
       <span class="side-links">
@@ -213,9 +284,17 @@ The methods in this paper have been implemented in Python using the SMT solver Z
 	  <!-- ---------------------------------------- -->
 
     <!-- ---------------------------------------- -->
-    <h1>Technical Reports</h1>
+    <h1>Technical Reports and Archives</h1>
     <!-- ---------------------------------------- -->
 
+    <p><b>Type-Driven Repair for Information Flow Security</b>
+      <span style="float: right;"><b>
+        <a href="https://arxiv.org/pdf/1607.03445v1">PDF</a>
+      </b></span>
+      <br/>
+      Nadia Polikarpova, Jean Yang, Shachar Itzhaky, Armando Solar-Lezama
+    </p>
+  
     <p><b>Effectively-Propositional Reasoning About Reachability in Linked Data Structures</b>
       <span style="float: right;"><b>
         <a href="dl/tr-2013.pdf">PDF</a>

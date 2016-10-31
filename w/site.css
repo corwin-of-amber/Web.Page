@@ -75,6 +75,7 @@ dt {
 span.side-links {
   float: right;
   font-weight: bold;
+  margin-left: 1em;
 }
 
 span.winkey {
