@@ -1,0 +1,25 @@
+[
+    {
+        "title": "Property-Directed Inference of Universal Invariants or Proving Their Absence",
+        "remark": " – extended version",
+        "authors": ["Aleksander Karbyshev", "Nikolaj Bjørner", 
+            "Shachar Itzhaky", "Noam Rinetzky", "Sharon Shoham"],
+        "in": {
+            "journal": "JACM",
+            "year": 2017,
+            "long": "Journal of the ACM"
+        }
+    },
+    {
+        "title": "Deriving Divide-and-Conquer Dynamic Programming Algorithms Using Solver-Aided Transformations",
+        "authors": ["Shachar Itzhaky", "Rohit Singh", "Armando Solar-Lezama", "Kuat Yessenov",
+                    "Yongquan Lu", "Charles Leiserson", "Rezaul Chowdhury"],
+        "in": {
+            "conf": "OOPSLA",
+            "year": "2016",
+            "month": "November",
+            "place": "Amsterdam, Netherlands",
+            "long": "ACM SIGPLAN conference on Systems, Programming, Languages, and Applications: Software for Humanity (OOPSLA track)"
+        }
+    }
+]

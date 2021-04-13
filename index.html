@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Shachar Itzhaky (Technion)</title>
+  <script src="src/dev.ts"></script>
+</head>
+<body>
+  <div id="main">
+    <div class="name-header">
+      <!-- <img src="images/angus.jpg" class="head" title="In fact, my glasses are a bit more round and sometimes I wear contacts"> -->
+      <div class="name">Shachar Itzhaky</div>
+    </div>
+    <div class="authors">
+      A Minimalist Web Page
+      <span style="float: right;">
+        <!--
+        <script type="text/javascript">
+            var addr = "shacha";
+            addr += "ri@theplacion";
+            addr = addr.replace('theplac', 'techn');
+            document.write('<a href="mailto:'+addr.replace('tech', 'cs.tech')+'.ac.il">'+addr+'</a>');
+        </script> -->
+        <a>{{me}}</a>
+      </span>
+    </div>
+
+	<p>Well, Hi.</p>
+    <p>I am a senior lecturer at Technion, Haifa.
+      My research areas include functional languages, synthesis of
+      functional programs, and high-level programming.
+      This is my current <a href="dl/research.pdf">research statement</a>.
+    </p>
+
+
+    <!-- ---------------------------------------- -->
+    <h1>Publications</h1>
+    <!-- ---------------------------------------- -->
+    <template v-for="e in bib">
+      <p><b>
+        <span class="side-links">
+          <a v-if="getAbstract(e)" :onclick="`tog('abstract-${bibKey(e)}'); return false`" href="#">Abstract</a>&nbsp;
+          <a v-if="getPdf(e)" href="dl/onward2016.pdf">PDF</a>
+        </span>
+        {{e.title}}</b>{{e.remark}}
+        <br/>
+        <template v-for="(a,$i) in e.authors">
+          {{$i > 0 ? ', ' : ''}}{{a}}
+        </template>.
+        <i v-if="e.in">In {{e.in.conf || e.in.journal}} {{e.in.year}}
+          <template v-if="e.in.long">
+            ({{e.in.long}}<!--
+            --><template v-if="e.in.place">, {{e.in.place}}</template><!--
+            --><template v-if="e.in.year">, {{e.in.month}} {{e.in.year}}</template>)
+          </template>
+        </i>
+      </p>
+      <div :id="`abstract-${bibKey(e)}`" v-if="getAbstract(e)" class="abstract">
+        {{getAbstract(e)}}
+      </div>
+    </template>
+    
+    <p><b>Deriving Divide-and-Conquer Dynamic Programming Algorithms Using Solver-Aided Transformations</b>
+      <span class="side-links">
+        <a onclick="tog('oopsla16-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/oopsla2016.pdf">PDF</a>
+      </span>
+      <br/>
+      Shachar Itzhaky, Rohit Singh, Armando Solar-Lezama, Kuat Yessenov, Yongquan Lu, Charles Leiserson, Rezaul Chowdhury
+      <i>In SPLASH 2016 OOPSLA (to appear November 2016)</i>
+    </p>
+    <div id="oopsla16-abstract" class="abstract" style="display: none;">
+We introduce a framework allowing domain experts to ma- nipulate computational terms in the interest of deriving better, more efficient implementations. It employs deductive reasoning to generate provably correct efficient implementations from a very high-level specification of an algorithm, and inductive constraint-based synthesis to improve automation. Semantic information is encoded into program terms through the use of refinement types.
+In this paper, we develop the technique in the context of a system called Bellmania that uses solver-aided tactics to derive parallel divide-and-conquer implementations of dynamic programming algorithms that have better locality and are significantly more efficient than traditional loop-based implementations. Bellmania includes a high-level language for specifying dynamic programming algorithms and a calculus that facilitates gradual transformation of these specifications into efficient implementations. These transformations formalize the divide-and-conquer technique; a visualization interface helps users to interactively guide the process, while an SMT-based back-end verifies each step and takes care of low-level reasoning required for parallelism.
+We have used the system to generate provably correct implementations of several algorithms, including some important algorithms from computational biology, and show that the performance is comparable to that of the best manually optimized code.
+</p>
+    </div>
+
+    <p><span class="side-links">
+        <a onclick="tog('onward16-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/onward2016.pdf">PDF</a>
+      </span>
+      <b>Object Spreadsheets: a New Computational Model for End-user Development of Data-centric Web Applications</b>
+      <br/>
+      Richard Matthew McCutchen, Shachar Itzhaky, Daniel Jackson
+      <i>In SPLASH 2016 Onward! (to appear November 2016)</i>
+    </p>
+<div id="onward16-abstract" class="abstract" style="display: none;">
+<p>Spreadsheets offer many advantages as the computational and data-storage engine for applications that are authored by end users. Paradoxically, however, their main failing in this regard is their computational model. Despite being used in almost all cases to represent data that is essentially relational (with some hierarchical structuring), the spreadsheet model treats the two-dimensional grid as largely unstructured, with formulas linking cells in an ad hoc way.
+This paper reports on a quest to rethink the spreadsheet model. The model we propose supports not only conventional relational data, but also nested variable-size lists and object references. It includes a formula language suited to the data model and procedures to specify updates.
+The model has been implemented in a tool called Object Spreadsheets, which is intended for the development of data-centric web applications. We describe several example applications we built using the tool to demonstrate its applicability.</p>
+</div>
+
+    <p><b>Verified Lifting of Stencil Computations</b>
+      <span class="side-links">
+        <a onclick="tog('pldi16-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/pldi2016.pdf">PDF</a>
+      </span>
+      <br/>
+      Shoaib Kamil, Alvin Cheung, Shachar Itzhaky, and Armando Solar-Lezama
+      <i>In PLDI 2016 (37th ACM SIGPLAN Conference on Programming Language Design and Implementation, 
+        Santa Barbara, CA, USA, June 2016)</i>
+    </p>
+    <div id="pldi16-abstract" class="abstract" style="display: none;">
+<p>This paper demonstrates a novel combination of program synthesis and verification to lift stencil computations from low-level Fortran code to a high-level summary expressed using a predicate language. The technique is sound and mostly automated, and leverages counter-example guided inductive synthesis (CEGIS) to find provably correct translations. Lifting existing code to a high-performance description language has a number of benefits, including maintainability and performance portability. Our experiments show that the lifted summaries allow domain specific compilers to do a better job of parallelization as compared to an off-the-shelf compiler working on the original code, and can even support fully automatic migration to hardware accelerators such as GPUs. We have implemented verified lifting in a system called STNG and have evaluated it using microbenchmarks, mini-apps, and real-world applications. We demonstrate the benefits of verified lifting by first automatically summarizing Fortran source code into a high-level predicate language, and subsequently translating the lifted summaries into Halide, with the translated code achieving median performance speedups of 4.1× and up to 24× as compared to the original implementation.
+</p>
+    </div>
+
+    <p><b>Property-Directed Inference of Universal Invariants or Proving Their Absence</b>
+      <span class="side-links">
+        <a onclick="tog('cav15-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/cav2015.pdf">PDF</a>
+      </span>
+      <br/>
+      Aleksander Karbyshev, Nikolaj Bjørner, Shachar Itzhaky, Noam Rinetzky, and Sharon Shoham
+      <i>In CAV 2015 (Computer Aided Verification, San Francisco, CA, USA, July 2015)</i>
+    </p>
+    <div id="cav15-abstract" class="abstract" style="display: none;">
+<p>We present <i>Universal Property Directed Reachability</i> (PDR<sup>∀</sup>), a property-directed procedure for automatic inference of invariants in a universal fragment of first-order logic. PDR<sup>∀</sup> is an extension of Bradley’s PDR/IC3 algorithm for inference of propositional invariants. PDR<sup>∀</sup> terminates when it either discovers a concrete counterexample, infers an inductive universal invariant strong enough to establish the desired safety property, or finds a proof that such an invariant does not exist. We implemented an analyzer based on PDR<sup>∀</sup>, and applied it to a collection of list-manipulating programs. Our analyzer was able to automatically infer universal invariants strong enough to establish memory safety and certain functional correctness properties, show the absence of such invariants for certain natural programs and specifications, and detect bugs. All this, without the need for user-supplied abstraction predicates.
+</p>
+    </div>
+
+    <p><b>Property-Directed Shape Analysis</b>
+      <span class="side-links">
+        <a onclick="tog('cav14-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/cav2014.pdf">PDF</a>
+      </span>
+      <br/>
+      Shachar Itzhaky, Nikolaj Bjørner, Thomas Reps, Mooly Sagiv, Aditya Thakur
+      <i>In CAV 2014 (Computer Aided Verification, Vienna, Austria, July 2014)</i>
+    </p>
+    <div id="cav14-abstract" class="abstract" style="display: none;">
+<p>This paper addresses the problem of automatically generating quantified invariants 
+for programs that manipulate singly- and doubly-linked list data structures. 
+Our algorithm is property-directed — i.e., its choices are driven by the properties to be proven. 
+The algorithm is able to establish that a correct program has no memory-safety
+violations — e.g., null-pointer dereferences, double frees —
+and that data-structure invariants are preserved.
+For programs with errors, the algorithm produces concrete counterexamples.
+</p>
+<p>More broadly, the paper describes how to integrate IC3 with full predicate abstraction. 
+The analysis method is complete in the following sense: if an inductive
+invariant that proves that the program satisfies a given property is 
+expressible as a Boolean combination of a given set of predicates, then the analysis will find such an invariant.
+This method represents the first shape-analysis algorithm that is capable of 
+</p>
+<ol>
+  <li>reporting concrete counterexamples, or alternatively</li>
+  <li>establishing that the predicates in use are not capable of proving the property in question.</li>
+</ol>
+    </div>
+  
+    <p><b>VeriCon: Towards Verifying Controller Programs in Software-Defined Networks</b>
+      <span class="side-links">
+        <a onclick="tog('pldi14-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/pldi2014.pdf">PDF</a>
+      </span>
+      <br/>
+      Thomas Ball, Nikolaj Bjørner, Aaron Gember,
+        Shachar Itzhaky, Aleksandr Karbyshev, Mooly Sagiv,
+        Michael Schapira, Asaf Valadarsky
+      <i>In PLDI 2014 (35th ACM SIGPLAN Conference on Programming Language Design and Implementation, 
+        Edinburgh, UK, June 2014)</i>
+    </p>
+    <div id="pldi14-abstract" class="abstract" style="display: none;">
+<p>Software-defined networking (SDN) is a new paradigm for operating and managing computer networks. SDN enables logically-centralized control over network devices through a “controller” software that operates independently from the network hardware, and can be viewed as the network operating system. Network operators can run both inhouse and third-party SDN programs (often called <em>applications</em>) on top of the controller, e.g., to specify routing and access control policies. SDN opens up the possibility of applying formal methods to prove the correctness of computer networks. Indeed, recently much effort has been invested in applying finite state model checking to check that SDN programs behave correctly. However, in general, scaling these methods to large networks is challenging and, moreover, they cannot guarantee the absence of errors.
+</p>
+<p>We present VeriCon, the first system for verifying that an SDN program is correct on <em>all</em> admissible topologies and for <em>all</em> possible (infinite) sequences of network events. VeriCon either confirms the correctness of the controller program on <em>all</em> admissible network topologies or outputs a concrete counterexample. VeriCon uses first-order logic to specify admissible network topologies and desired network-wide invariants, and then implements classical Floyd-Hoare-Dijkstra deductive verification using Z3. Our preliminary experience indicates that VeriCon is able to rapidly verify correctness, or identify bugs, for a large repertoire of simple core SDN programs. VeriCon is compositional, in the sense that it verifies the correctness of execution of any single network event w.r.t. the specified invariant, and can thus scale to handle large programs. To relieve the burden of specifying inductive invariants from the programmer, VeriCon includes a separate procedure for inferring invariants, which is shown to be effective on simple controller programs. We view VeriCon as a first step en route to practical mechanisms for verifying network-wide invariants of SDN programs.
+</p>
+    </div>
+
+    <p><b>Modular Reasoning about Heap Paths via Effectively Propositional Formulas</b>
+      <span class="side-links">
+        <a onclick="tog('popl14-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/popl2014.pdf">PDF</a>
+      </span>
+      <br/>
+      Shachar Itzhaky, Anindya Banerjee, Neil Immerman, Ori Lahav, Aleksandar Nanevski, Mooly Sagiv
+      <i>In POPL 2014 (41st ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages, 
+      San Diego, CA, USA, January 2014)</i>
+    </p>
+    <div id="popl14-abstract" class="abstract" style="display: none;">
+<p>First-order logic with transitive closure and separation logic enable elegant interactive verification of heap-manipulating programs.
+However, undecidabilty results and high asymptotic complexity of checking validity preclude complete automatic verification of such programs,
+even when loop invariants and procedure contracts are specified as formulas in these logics.
+This paper tackles the problem of procedure-modular verification of reachability properties of heap-manipulating programs using efficient decision procedures that are complete:
+that is, a SAT solver must generate a counterexample whenever a program does not satisfy its specification. By
+</p>
+<ol>
+  <li>requiring each procedure modifies a fixed set of heap partitions and creates a bounded amount of heap sharing, and </li>
+  <li>restricting program contracts and loop invariants to use only deterministic paths in the heap, </li>
+</ol>
+<p class="noindent">we show that heap reachability updates can be described in a simple manner.
+The restrictions force program specifications and verification conditions to lie within a fragment of first-order logic with
+transitive closure that is reducible to effectively propositional logic, and hence facilitate sound, complete and efficient verification.
+We implemented a tool atop Z3 and report on preliminary experiments that establish the correctness of several programs that manipulate linked data structures.
+</p>
+    </div>
+  
+    <p><b>Solving Geometry Problems Using a Combination of Symbolic and Numerical Reasoning</b>
+      <span class="side-links">
+        <a onclick="tog('lpar13-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/lpar2013.pdf">PDF</a>
+      </span>
+      <br/>
+      Shachar Itzhaky, Sumit Gulwani, Neil Immerman, Mooly Sagiv
+	  <i>In LPAR-19, Stellenbosch, South Africa, December 2013</i>
+	</p>
+    <div id="lpar13-abstract" class="abstract" style="display: none;">
+<p>We describe a framework that combines deductive, numeric, and inductive reasoning to solve geometric problems. Applications in- clude the generation of geometric models and animations, as well as problem solving in the context of intelligent tutoring systems.</p>
+<p>Our novel methodology uses</p>
+<ol>
+  <li>Deductive reasoning to generate a partial program from logical constraints,</li>
+  <li>Numerical methods to evaluate the partial program, thus creating geometric models which are solutions to the original problem,</li>
+  <li>Inductive synthesis to read off new constraints that are then applied to one more round of deductive reasoning leading to the desired deterministic program.</li> 
+</ol>
+<p>By the combination of methods we were able to solve problems that each of the methods was not able to solve by itself.</p>
+<p>The number of nondeterministic choices in a partial program provides a measure of how close a problem is to being solved and can thus be used in the educational context for grading and providing hints.</p>
+<p>We have successfully evaluated our methodology on 18 Scholastic Aptitude Test geometry problems, and 11 ruler/compass-based geometry construction problems.
+Our tool solved these problems in an average of a few seconds per problem.</p>
+    </div>
+    
+    <p><b>Effectively-Propositional Reasoning About Reachability in Linked Data Structures</b>
+      <span class="side-links">
+        <a onclick="tog('cav13-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/cav2013.pdf">PDF</a>
+      </span>
+      <br/>
+      Shachar Itzhaky, Anindya Banerjee, Neil Immerman, Aleksandar Nanevski, Mooly Sagiv
+      <i>In CAV 2013 (Computer Aided Verification, 2013, St. Petersburg, Russia, July 2013)</i>
+    </p>
+    <div id="cav13-abstract" class="abstract" style="display: none;">
+<p>
+This paper proposes a novel method of harnessing existing SAT solvers to verify
+reachability properties of programs that manipulate linked-list data structures.  Such properties
+are essential for proving program termination, correctness of data structure
+invariants, and other safety properties. Our solution is complete,
+i.e., a SAT solver produces a counterexample whenever a program
+does not satisfy its specification. This result is
+surprising since even first-order theorem provers usually cannot deal
+with reachability in a complete way, because doing so requires reasoning about 
+transitive closure.</p>
+<p>
+Our result is based on the following ideas:</p>
+<ol>
+<li>Programmers must write assertions in a restricted logic without quantifier alternation or function symbols. </li>
+<li>The correctness of many programs can be expressed in such restricted  logics, although we explain the tradeoffs.</li>
+<li>Recent results in descriptive complexity can be utilized to show that every program that manipulates
+potentially cyclic, singly- and doubly-linked lists and that is annotated with assertions written in this restricted logic, can be verified with a SAT solver. </li>
+</ol>
+<p>
+We implemented a tool atop Z3 and used it to show the correctness of several linked list programs.
+</p>      </div>
+
+    <p><b>A Simple Inductive Synthesis Methodology and Its Applications</b>
+      <span class="side-links">
+        <a onclick="tog('splash10-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="http://portal.acm.org/exportformats.cfm?id=1869463&expformat=bibtex">BibTeX</a>&nbsp;
+        <a href="http://portal.acm.org/ft_gateway.cfm?id=1869463&type=pdf&CFID=112643958&CFTOKEN=28923922">PDF</a>
+      </span>
+      <br/>
+      Shachar Itzhaky, Sumit Gulwani, Neil Immerman, Mooly Sagiv
+      <i>In SPLASH 2010 (ACM SIGPLAN Conference on  Systems, Programming, Languages and Applications: Software for Humanity, Reno, NV, United States, October 2010)</i>
+    </p>
+    <div id="splash10-abstract" class="abstract" style="display: none;">
+<p>
+Given a high-level specification and a low-level programming language, our goal is to automatically
+synthesize an efficient program that meets the specification. In this paper, we present a new
+algorithmic methodology for inductive synthesis that allows us to do this.</p>
+<p>
+We use Second Order logic as our generic high level specification logic.  For our low-level
+languages we choose small application-specific logics that can be immediately translated into code
+that runs in expected linear time in the worst case. </p>
+<p>
+We explain our methodology and provide examples of the synthesis of several graph classifiers, e.g,
+linear-time tests of whether the input graph is connected, acyclic, etc.  In another set of
+applications we automatically derive many finite differencing expressions equivalent to ones that
+Paige built by hand in his thesis.  Finally we describe directions for
+automatically combining such automatically generated building blocks to synthesize efficient code
+implementing more complicated specifications.</p>
+<p>
+The methods in this paper have been implemented in Python using the SMT solver Z3.</p>
+      </div>
+
+	  <!-- ---------------------------------------- -->
+      <!-- <h2>Pending</h2> -->
+	  <!-- ---------------------------------------- -->
+
+    <!-- ---------------------------------------- -->
+    <h1>Technical Reports and Archives</h1>
+    <!-- ---------------------------------------- -->
+
+    <p><b>Type-Driven Repair for Information Flow Security</b>
+      <span style="float: right;"><b>
+        <a href="https://arxiv.org/pdf/1607.03445v1">PDF</a>
+      </b></span>
+      <br/>
+      Nadia Polikarpova, Jean Yang, Shachar Itzhaky, Armando Solar-Lezama
+    </p>
+  
+    <p><b>Effectively-Propositional Reasoning About Reachability in Linked Data Structures</b>
+      <span style="float: right;"><b>
+        <a href="dl/tr-2013.pdf">PDF</a>
+      </b></span>
+      <br/>
+      Shachar Itzhaky, Anindya Banerjee, Neil Immerman, Aleksandar Nanevski, Mooly Sagiv
+    </p>
+  
+    <p><b>Solving Geometry Problems Using a Combination of Symbolic and Numerical Reasoning</b>
+      <span style="float: right;"><b>
+        <a onclick="tog('tr2012-abstract'); return false" href="#">Abstract</a>&nbsp;
+        <a href="dl/tr-2012.pdf">PDF</a>
+      </b></span>
+      <br/>
+      Shachar Itzhaky, Sumit Gulwani, Neil Immerman, Mooly Sagiv
+    </p>
+    <div id="tr2012-abstract" class="abstract" style="display: none;">
+<p>We describe a framework that combines deductive, numeric, and inductive reasoning to solve geometric problems. Applications in- clude the generation of geometric models and animations, as well as problem solving in the context of intelligent tutoring systems.</p>
+<p>Our novel methodology uses</p>
+<ol>
+  <li>Deductive reasoning to generate a partial program from logical constraints,</li>
+  <li>Numerical methods to evaluate the partial program, thus creating geometric models which are solutions to the original problem,</li>
+  <li>Inductive synthesis to read off new constraints that are then applied to one more round of deductive reasoning leading to the desired deterministic program.</li> 
+</ol>
+<p>By the combination of methods we were able to solve problems that each of the methods was not able to solve by itself.</p>
+<p>The number of nondeterministic choices in a partial program provides a measure of how close a problem is to being solved and can thus be used in the educational context for grading and providing hints.</p>
+<p>We have successfully evaluated our methodology on 18 Scholastic Aptitude Test geometry problems, and 11 ruler/compass-based geometry construction problems.
+Our tool solved these problems in an average of a few seconds per problem.</p>
+    </div>
+
+    <!-- ---------------------------------------- -->
+    <h1>Thesis</h1>
+    <!-- ---------------------------------------- -->
+
+    <p><b>Automatic Reasoning for Pointer Programs Using Decidable Logics</b>
+      <span class="side-links">
+        <a href="dl/thesis.pdf">PDF</a>
+      </span>
+      <br/>
+      Under the supervision of Professor Mooly Sagiv
+      <br/>
+      <i>Tel Aviv University (submitted: August 2014; approved: July 2015)</i>
+      <br/>
+      <i>Recipient of the ACM SIGPLAN John C. Reynolds Doctoral Dissertation Award</i>
+    </p>
+
+    <h1>My Codez</h1><a name="software">
+    <dl class="software">
+      <dt>EPR-based Verification</dt>
+      <dd>PDR<sup>∀</sup> – loop invariant inference<br/>
+        <a href="dl/univ-pdr-all-mac-20160107.zip">Mac</a>
+        <a href="dl/univ-pdr-all-ubuntu-x64-20160107.zip">Ubuntu 64-bit</a>,
+        <a href="dl/univ-pdr-all-ubuntu-x86-20160107.zip">32-bit</a>
+      </dd>
+        <!-- <a href="dl/fol-tool.zip">Source code</a> (incl. dependencies, about 6M)</dd> -->
+      
+      <dt>VeriCon – Hoare-style verification for SDN controller programs</td>
+      <dd><a href="dl/VeriCon-snapshot.zip">Source</a></dd>
+      
+      <dt>Object Spreadsheets</dt>
+      <dd><a href="http://objsheets-demo.csail.mit.edu">Live demo</a></dd>
+      <!--
+      <dt><b>Figure</b> (2D Graphics Synthesis)</dt>
+      <dd>Windows: <a href="dl/Figure-win32-101202.zip"><tt>Figure-win32-101202.zip</tt></a> (32M)<br/>
+          Mac: <a href="dl/Figure-udzo-101202.dmg"><tt>Figure-udzo-101202.dmg</tt></a> (24M)
+          </dd><dd><p style='font-size: 80%; font-style: italic'>
+          Users are encouraged to download the <a href="http://sourceforge.net/projects/stixfonts/">STIX fonts package</a>
+          (free) for enhanced display of mathmatical symbols in formulas.</p>
+      </dd>
+      -->
+
+    </dl>
+  </div>
+  <script>var k = require('nwjs-kremlin').watch({window, main: 'index.html'});</script>
+</body>
+</html>

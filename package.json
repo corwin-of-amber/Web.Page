@@ -1,5 +1,12 @@
 {
   "name": "web-page",
   "version": "0.0.1",
-  "main": "w/index.html"
+  "main": "build/kremlin/index.html",
+  "dependencies": {
+    "@orcid/bibtex-parse-js": "^0.0.25",
+    "vue": "^3.0.11"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.37"
+  }
 }

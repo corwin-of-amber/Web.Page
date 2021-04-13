@@ -1,5 +1,6 @@
 #main {
-    width: 52em;
+    width: 90%;
+    max-width: 52em;
     margin: auto;
 }
 
@@ -112,6 +113,4 @@ code.command {
 
 dl.software dt {
   font-weight: bold;
-}
-
 }
