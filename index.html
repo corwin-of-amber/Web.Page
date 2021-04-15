@@ -10,20 +10,13 @@
 <body>
   <div id="main">
     <div class="name-header">
-      <!-- <img src="images/angus.jpg" class="head" title="In fact, my glasses are a bit more round and sometimes I wear contacts"> -->
+      <img src="images/angus.jpg" class="head" title="In fact, my glasses are a bit more round and sometimes I wear contacts">
       <div class="name">Shachar Itzhaky</div>
     </div>
     <div class="authors">
       A Minimalist Web Page
       <span style="float: right;">
-        <!--
-        <script type="text/javascript">
-            var addr = "shacha";
-            addr += "ri@theplacion";
-            addr = addr.replace('theplac', 'techn');
-            document.write('<a href="mailto:'+addr.replace('tech', 'cs.tech')+'.ac.il">'+addr+'</a>');
-        </script> -->
-        <a>{{me}}</a>
+        <a id="me">me</a>
       </span>
     </div>
 
@@ -40,11 +33,11 @@
     <!-- ---------------------------------------- -->
     <template v-for="e in bib">
       <p><b>
+        {{titleCase(e.title)}}</b>{{e.remark}}
         <span class="side-links">
           <a v-if="getAbstract(e)" :onclick="`tog('abstract-${bibKey(e)}'); return false`" href="#">Abstract</a>&nbsp;
           <a v-if="getPdf(e)" href="dl/onward2016.pdf">PDF</a>
         </span>
-        {{e.title}}</b>{{e.remark}}
         <br/>
         <template v-for="(a,$i) in e.authors">
           {{$i > 0 ? ', ' : ''}}{{a}}
@@ -57,26 +50,10 @@
           </template>
         </i>
       </p>
-      <div :id="`abstract-${bibKey(e)}`" v-if="getAbstract(e)" class="abstract">
-        {{getAbstract(e)}}
+      <div :id="`abstract-${bibKey(e)}`" v-if="getAbstract(e)"
+           class="abstract" style="display: none;" v-html="getAbstract(e)">
       </div>
     </template>
-    
-    <p><b>Deriving Divide-and-Conquer Dynamic Programming Algorithms Using Solver-Aided Transformations</b>
-      <span class="side-links">
-        <a onclick="tog('oopsla16-abstract'); return false" href="#">Abstract</a>&nbsp;
-        <a href="dl/oopsla2016.pdf">PDF</a>
-      </span>
-      <br/>
-      Shachar Itzhaky, Rohit Singh, Armando Solar-Lezama, Kuat Yessenov, Yongquan Lu, Charles Leiserson, Rezaul Chowdhury
-      <i>In SPLASH 2016 OOPSLA (to appear November 2016)</i>
-    </p>
-    <div id="oopsla16-abstract" class="abstract" style="display: none;">
-We introduce a framework allowing domain experts to ma- nipulate computational terms in the interest of deriving better, more efficient implementations. It employs deductive reasoning to generate provably correct efficient implementations from a very high-level specification of an algorithm, and inductive constraint-based synthesis to improve automation. Semantic information is encoded into program terms through the use of refinement types.
-In this paper, we develop the technique in the context of a system called Bellmania that uses solver-aided tactics to derive parallel divide-and-conquer implementations of dynamic programming algorithms that have better locality and are significantly more efficient than traditional loop-based implementations. Bellmania includes a high-level language for specifying dynamic programming algorithms and a calculus that facilitates gradual transformation of these specifications into efficient implementations. These transformations formalize the divide-and-conquer technique; a visualization interface helps users to interactively guide the process, while an SMT-based back-end verifies each step and takes care of low-level reasoning required for parallelism.
-We have used the system to generate provably correct implementations of several algorithms, including some important algorithms from computational biology, and show that the performance is comparable to that of the best manually optimized code.
-</p>
-    </div>
 
     <p><span class="side-links">
         <a onclick="tog('onward16-abstract'); return false" href="#">Abstract</a>&nbsp;

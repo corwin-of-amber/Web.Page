@@ -3,6 +3,7 @@ import bibtexParse from '@orcid/bibtex-parse-js';
 
 
 class BibEntry {
+    key?: string
     title: string
     authors: string[]
     in: BibEntry.Venue
@@ -66,6 +67,7 @@ class BibEntry {
      */
     static fromParsed(json: ParsedBibEntry) {
         var b = new BibEntry, tags = json.entryTags, v: string;
+        if (v = json.citationKey) b.key = v;
         if (v = tags.title) b.title = b.cleanup(v);
         if (v = tags.author) b.setAuthors(v);
         var in_: BibEntry.Venue = {};

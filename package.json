@@ -4,6 +4,7 @@
   "main": "build/kremlin/index.html",
   "dependencies": {
     "@orcid/bibtex-parse-js": "^0.0.25",
+    "title-case": "^3.0.3",
     "vue": "^3.0.11"
   },
   "devDependencies": {

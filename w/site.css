@@ -53,6 +53,10 @@
 	clear: both;
 }
 
+.abstract span.emph {
+    font-style: italic;
+}
+
 h1 {
     font-size: 1.25em;
     border-bottom: 1px solid #000000;
@@ -77,6 +81,7 @@ span.side-links {
   float: right;
   font-weight: bold;
   margin-left: 1em;
+  margin-bottom: .5em;
 }
 
 span.winkey {
