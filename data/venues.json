@@ -1,0 +1,22 @@
+{
+    "ICFP": {
+        "conf": "ICFP",
+        "long": "ACM SIGPLAN International Conference on Functional Programming"
+    },
+    "ESOP": {
+        "conf": "ESOP",
+        "long": "European Symposium on Programming"
+    },
+    "VMCAI": {
+        "conf": "VMCAI",
+        "long": "International Conference on Verification, Model Checking, and Abstract Interpretation"
+    },
+    "JACM": {
+        "journal": "JACM",
+        "long": "Journal of the ACM"
+    },
+    "OOPSLA": {
+        "conf": "OOPSLA",
+        "long": "ACM SIGPLAN conference on Systems, Programming, Languages, and Applications: Software for Humanity (OOPSLA track)"
+    }
+}

@@ -87,6 +87,7 @@ namespace BibEntry {
     export type Venue = {
         journal?: string
         conf?: string
+        long?: string
         year?: string | number
         month?: string
         sub?: string
@@ -100,4 +101,33 @@ type ParsedBibEntry = {
 }
 
 
-export { BibEntry, ParsedBibEntry }
+class VenueDB {
+    entries: {[name: string]: BibEntry.Venue}
+
+    constructor(entries: {[name: string]: BibEntry.Venue}) {
+        this.entries = entries;
+    }
+
+    normalize(venue: BibEntry.Venue) {
+        for (let [k,v] of Object.entries(this.entries)) {
+            var re = new RegExp(`\\b${k}\\b`);
+            for (let part of [venue.conf, venue.journal, venue.sub]) {
+                if (part && re.exec(part))
+                    return Object.assign(venue, v);
+            }
+        }
+        return venue;
+    }
+
+    normalizeEntry(bibEntry: BibEntry) {
+        if (bibEntry.in) bibEntry.in = this.normalize(bibEntry.in);
+        return bibEntry;
+    }
+
+    normalizeEntries(bibEntries: BibEntry[]) {
+        return bibEntries.map(e => this.normalizeEntry(e));
+    }
+}
+
+
+export { BibEntry, ParsedBibEntry, VenueDB }

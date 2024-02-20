@@ -2,25 +2,29 @@ import fs from 'fs';
 import Vue from 'vue';
 import { titleCase } from 'title-case';
 
-import { BibEntry } from './bib';
+import { BibEntry, VenueDB } from './bib';
 import { quicktex } from './latex';
 
 import bib from '../data/bib.json';
 import '../w/site.css';
 
-const ABSTRACTS_FN = 'data/abstracts.json';
+const VENUES_FN = 'data/venues.json',
+      ABSTRACTS_FN = 'data/abstracts.json';
 
-var db = {abstracts: {} as {[key: string]: string}};
+var db = {abstracts: {} as {[key: string]: string},
+          venues: {} as {[key: string]: BibEntry.Venue}};
 
 
 function main() {
     
     Object.assign(window, {tog, quicktex, save, exportHtml});
 
+    load();
+
     var moreBib = BibEntry.parseBibFile('data/bib.bib');
+    moreBib = new VenueDB(db.venues).normalizeEntries(moreBib);
     bib.unshift(...moreBib.reverse());
 
-    db.abstracts = JSON.parse(fs.readFileSync(ABSTRACTS_FN, 'utf-8'));
     //db.abstracts['ICFP2021'] =
     //    quicktex(fs.readFileSync('data/abstract.tex', 'utf-8')).innerHTML;
 
@@ -35,6 +39,11 @@ function main() {
             getPdf(bib) {}
         }
     }).mount('#main');
+}
+
+function load() {
+    db.abstracts = JSON.parse(fs.readFileSync(ABSTRACTS_FN, 'utf-8'));
+    db.venues = JSON.parse(fs.readFileSync(VENUES_FN, 'utf-8'));
 }
 
 function save() {
