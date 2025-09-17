@@ -1,59 +1,53 @@
 import fs from 'fs';
 import Vue from 'vue';
-import { titleCase } from 'title-case';
 
+import { FileStore } from './infra/store';
+import Pub, { IPub } from './components/pub.vue';
 import { BibEntry, VenueDB } from './bib';
 import { quicktex } from './latex';
 
 import bib from '../data/bib.json';
 import '../w/site.css';
 
-const VENUES_FN = 'data/venues.json',
-      ABSTRACTS_FN = 'data/abstracts.json';
-
-var db = {abstracts: {} as {[key: string]: string},
-          venues: {} as {[key: string]: BibEntry.Venue}};
-
 
 function main() {
-    
-    Object.assign(window, {tog, quicktex, save, exportHtml});
+    Object.assign(window, {tog, quicktex, exportHtml});
 
-    load();
+    let db = new DB();
+    db.load();
 
     var moreBib = BibEntry.parseBibFile('data/bib.bib');
     moreBib = new VenueDB(db.venues).normalizeEntries(moreBib);
     bib.unshift(...moreBib.reverse());
 
-    //db.abstracts['ICFP2021'] =
-    //    quicktex(fs.readFileSync('data/abstract.tex', 'utf-8')).innerHTML;
+    if (false)
+        db.abstracts['PLDI2023'] =
+            quicktex(fs.readFileSync('data/abstract.tex', 'utf-8')).innerHTML;
 
-    Vue.createApp({
-        data: () => ({me: 'shachari', bib}),
-        methods: {
-            bibKey,
-            titleCase,
-            getAbstract(bib) {
-                return db.abstracts[bibKey(bib)];
-            },
-            getPdf(bib) {}
-        }
-    }).mount('#main');
+    let pub = Vue.createApp(Pub).mount('#publications') as IPub;
+    pub.bib = bib;
+    pub.db = db;
+    Object.assign(window, {pub, db});
 }
 
-function load() {
-    db.abstracts = JSON.parse(fs.readFileSync(ABSTRACTS_FN, 'utf-8'));
-    db.venues = JSON.parse(fs.readFileSync(VENUES_FN, 'utf-8'));
-}
 
-function save() {
-    fs.writeFileSync(ABSTRACTS_FN, JSON.stringify(db.abstracts, null, '  '));
-}
+class DB {
+    abstracts: {[key: string]: string} = {}
+    venues: {[key: string]: BibEntry.Venue} = {}
 
-function bibKey(bibentry) {
-    if (bibentry.key) return bibentry.key;
-    var e = bibentry.in;
-    return (e.conf || e.journal) + e.year;
+    store = {
+        abstracts: new FileStore('data/abstracts.json', JSON),
+        venus: new FileStore('data/venues.json', JSON)
+    }
+
+    load() {
+        this.abstracts = this.store.abstracts.load();
+        this.venues = this.store.venus.load();
+    }
+
+    save() {
+        this.store.abstracts.save(this.abstracts);
+    }
 }
 
 function exportHtml() {
@@ -85,3 +79,5 @@ function tog(id) {
 
 
 document.addEventListener("DOMContentLoaded", main);
+
+export { DB }

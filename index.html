@@ -10,7 +10,7 @@
 <body>
   <div id="main">
     <div class="name-header">
-      <img src="images/angus.jpg" class="head" title="In fact, my glasses are a bit more round and sometimes I wear contacts">
+      <img src="images/me-gemini.png" width="75px" class="head" title="A webcomic-style version (created with Gemini)">
       <div class="name">Shachar Itzhaky</div>
     </div>
     <div class="authors">
@@ -21,7 +21,7 @@
     </div>
 
 	<p>Well, Hi.</p>
-    <p>I am a senior lecturer at Technion, Haifa.
+    <p>I am an associate professor at Technion, Haifa.
       My research areas include functional languages, synthesis of
       functional programs, and high-level programming.
       This is my current <a href="dl/research.pdf">research statement</a>.
@@ -31,29 +31,7 @@
     <!-- ---------------------------------------- -->
     <h1>Publications</h1>
     <!-- ---------------------------------------- -->
-    <template v-for="e in bib">
-      <p><b>
-        {{titleCase(e.title)}}</b>{{e.remark}}
-        <span class="side-links">
-          <a v-if="getAbstract(e)" :onclick="`tog('abstract-${bibKey(e)}'); return false`" href="#">Abstract</a>&nbsp;
-          <a v-if="getPdf(e)" href="dl/onward2016.pdf">PDF</a>
-        </span>
-        <br/>
-        <template v-for="(a,$i) in e.authors">
-          {{$i > 0 ? ', ' : ''}}{{a}}
-        </template>.
-        <i v-if="e.in">In {{e.in.conf || e.in.journal}} {{e.in.year}}
-          <template v-if="e.in.long">
-            ({{e.in.long}}<!--
-            --><template v-if="e.in.place">, {{e.in.place}}</template><!--
-            --><template v-if="e.in.year">, {{e.in.month}} {{e.in.year}}</template>)
-          </template>
-        </i>
-      </p>
-      <div :id="`abstract-${bibKey(e)}`" v-if="getAbstract(e)"
-           class="abstract" style="display: none;" v-html="getAbstract(e)">
-      </div>
-    </template>
+    <div id="publications"></div>
 
     <p><span class="side-links">
         <a onclick="tog('onward16-abstract'); return false" href="#">Abstract</a>&nbsp;
