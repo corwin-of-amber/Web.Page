@@ -18,5 +18,21 @@
     "OOPSLA": {
         "conf": "OOPSLA",
         "long": "ACM SIGPLAN conference on Systems, Programming, Languages, and Applications: Software for Humanity (OOPSLA track)"
+    },
+    "FMCAD": {
+        "conf": "FMCAD",
+        "long": "Formal Methods in Computer-Aided Design"
+    },
+    "Onward": {
+        "conf": "Onward!",
+        "long": "ACM SIGPLAN International Symposium on New Ideas, New Paradigms, and Reflections on Programming and Software, Onward!"
+    },
+    "PLDI": {
+        "conf": "PLDI",
+        "long": "Programming Language Design and Implementation"
+    },
+    "ECOOP": {
+        "conf": "ECOOP",
+        "long": "European Conference on Object-Oriented Programming"
     }
 }

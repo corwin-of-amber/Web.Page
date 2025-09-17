@@ -44,6 +44,10 @@
     font-family: sans-serif;
 }
 
+.venue {
+    color: #668;
+}
+
 .abstract {
 	padding-left: 10px;
 	padding-right: 10px;

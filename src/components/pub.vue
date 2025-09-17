@@ -12,7 +12,7 @@
         <template v-for="(a,$i) in e.authors">
           {{$i > 0 ? ', ' : ''}}{{a}}
         </template>.
-        <i v-if="e.in">In {{e.in.conf || e.in.journal}} {{e.in.year}}
+        <i class="venue" v-if="e.in">In {{e.in.conf || e.in.journal}} {{e.in.year}}
           <template v-if="e.in.long">
             ({{e.in.long}}<!--
             --><template v-if="e.in.place">, {{e.in.place}}</template><!--

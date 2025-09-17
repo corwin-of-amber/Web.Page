@@ -47,7 +47,7 @@ class BibEntry {
         let M = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
             hasWord = (s: string, w: string) => new RegExp(`\\b${w}\\b`, 'i').exec(s);
         for (var m of M) {
-            if (hasWord(s, m) || hasWord(s, m.slice(3))) return m;
+            if (hasWord(s, m) || hasWord(s, m.slice(0, 3))) return m;
         }
         return undefined;
     }
